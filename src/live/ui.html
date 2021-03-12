@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<style>
+    :root {
+        --terminalWidth: 30em;
+    }
+
+    html,body {
+        background-color: #111;
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+    }
+
+    .terminalHead {
+        background-color: #333;
+        width: var(--terminalWidth);
+        height: 2em;
+        border-radius: 0.5em;
+        padding: 0.3em 1em;
+    }
+    .terminalBody {
+        background-color: #222;
+        width: var(--terminalWidth);
+        height: 20em;
+        padding: 0.3em 1em;
+        margin: 0 -1em;
+        overflow-y: scroll;
+        overflow-x: auto;
+    }
+    .terminalInput {
+        background-color: rgb(25,25,25);
+        width: calc(var(--terminalWidth) + 2em);
+        padding: 0;
+        margin: 0 -1em;
+        border-radius: 0 0 0.5em 0.5em;
+        position: relative;
+        top: 0em;
+    }
+    .terminalInputText {
+        background-color: rgba(0,0,0,0);
+        border: none;
+        outline: 0;
+        color: white;
+        width: calc(var(--terminalWidth) + 2.8em);
+    }
+    .terminalSend {
+        color: white;
+        background-color: rgb(7, 57, 114);
+        outline: 0;
+        border: none;
+        border-radius: 0 0 0.5em 0;
+    }
+</style>
+
+<html>
+    <head>
+        <title>Remote Terminal</title>
+    </head>
+    <body>
+        <!-----   Terminal   ----->
+        <div id="terminalHead" class="terminalHead">
+            Remote Terminal - v1.0
+            <div id="terminalBody" class="terminalBody">
+                <p>➝ Connected</p>
+            </div>
+            <div id="terminalInput" class="terminalInput">
+                🠕 
+                <span>
+                    <input type="text" placeholder="Send command" class="terminalInputText" id="terminalInputText">
+                    <button id="terminalSend" class="terminalSend">Submit</button>
+                </span>
+            </div>
+        </div>
+        <!-----   End Terminal   ----->
+
+    </body>
+</html>
+
+<script src="requestHandler.js"></script>
+<script src="customCommands.js"></script>
+<script src="terminalHandler.js"></script>
