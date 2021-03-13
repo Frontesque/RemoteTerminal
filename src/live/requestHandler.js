@@ -5,7 +5,7 @@ function send(command) {
         if (this.readyState == 4 && this.status == 200) {
             //Handle Request Response
             const res = JSON.parse(request.response).output;
-            document.getElementById('terminalBody').innerHTML = `<p>➝ ${res}</p>${document.getElementById('terminalBody').innerHTML}`
+            append(`<p><span class="preReturn">➝</span> ${res.replace(/\r\n/g, "<br>")}</p>`)
         }
     };
     //Send Request

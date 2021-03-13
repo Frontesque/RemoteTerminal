@@ -1,54 +1,66 @@
 <!DOCTYPE html>
 
 <style>
-    :root {
-        --terminalWidth: 30em;
-    }
-
     html,body {
         background-color: #111;
         font-family: Arial, Helvetica, sans-serif;
         color: white;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        height: 100%;
     }
 
     .terminalHead {
         background-color: #333;
-        width: var(--terminalWidth);
-        height: 2em;
-        border-radius: 0.5em;
+        width: calc(100% - 2em);
+        height: 1em;
         padding: 0.3em 1em;
     }
     .terminalBody {
         background-color: #222;
-        width: var(--terminalWidth);
-        height: 20em;
+        width: calc(100% - 1em);
+        font-family: monospace;
+        height: calc(100% - 6em);
         padding: 0.3em 1em;
         margin: 0 -1em;
         overflow-y: scroll;
-        overflow-x: auto;
     }
     .terminalInput {
         background-color: rgb(25,25,25);
-        width: calc(var(--terminalWidth) + 2em);
+        width: 100%;
         padding: 0;
-        margin: 0 -1em;
-        border-radius: 0 0 0.5em 0.5em;
-        position: relative;
-        top: 0em;
+        position: absolute;
+        bottom: 0em;
+        height: 3em;
     }
     .terminalInputText {
         background-color: rgba(0,0,0,0);
         border: none;
         outline: 0;
         color: white;
-        width: calc(var(--terminalWidth) + 2.8em);
+        width: 100%;
+        height: 2em;
+        font-size: 1.25em;
     }
     .terminalSend {
         color: white;
         background-color: rgb(7, 57, 114);
         outline: 0;
         border: none;
-        border-radius: 0 0 0.5em 0;
+        border-radius: 1em 0 0 0;
+        height: 3.5em;
+        width: 5em;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+
+    .preSend {
+        color: aqua;
+    }
+    .preReturn {
+        color: green;
     }
 </style>
 
@@ -58,24 +70,21 @@
     </head>
     <body>
         <!-----   Terminal   ----->
-        <div id="terminalHead" class="terminalHead">
-            Remote Terminal - v1.0
-            <div id="terminalBody" class="terminalBody">
-                <p>➝ Connected</p>
-            </div>
-            <div id="terminalInput" class="terminalInput">
-                🠕 
-                <span>
-                    <input type="text" placeholder="Send command" class="terminalInputText" id="terminalInputText">
-                    <button id="terminalSend" class="terminalSend">Submit</button>
-                </span>
-            </div>
+        <div id="terminalHead" class="terminalHead">Remote Terminal - v1.1</div>
+        <div id="terminalBody" class="terminalBody">
+            <p>Copyright (c) 2021 Front - RemoteTerminal is licensed under the <a href="https://github.com/Frontesque/RemoteTerminal/blob/main/LICENSE">MIT License</a> - Contribute on the Github repo: <a href="https://github.com/Frontesque/RemoteTerminal">https://github.com/Frontesque/RemoteTerminal</a></p>
+            <p><span class="preReturn">➝</span> Connected</p>
+        </div>
+        <div id="terminalInput" class="terminalInput">
+            <input type="text" placeholder="Send command" class="terminalInputText" id="terminalInputText">
+            <button id="terminalSend" class="terminalSend">Submit</button>
         </div>
         <!-----   End Terminal   ----->
 
     </body>
 </html>
 
+<script src="commandEval.js"></script>
 <script src="requestHandler.js"></script>
 <script src="customCommands.js"></script>
 <script src="terminalHandler.js"></script>
